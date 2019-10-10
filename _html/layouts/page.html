@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+
+    <script>
+      function checkStatus(response) {
+        if (response.status < 200 || response.status >= 300) {
+          return Promise.reject(new Error(response.status + ", " + response.statusText));
+        }
+
+        return Promise.resolve(response);
+      }
+
+      function json(response) {
+        return response.json();
+      }
+
+      {{ page.header_js }}
+    </script>
+
+    <!-- MISC -->
+    <!-- fav and touch icons -->
+    <link rel="shortcut icon" href="https://www.jengermann.com/favicon.ico">
+    <link rel="apple-touch-icon" href="http://www.jengermann.com/wp-content/themes/v8/assets/images/ico/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.jengermann.com/wp-content/themes/v8/assets/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.jengermann.com/wp-content/themes/v8/assets/images/ico/apple-touch-icon-114x114.png">
+
+    <!-- Typkit Code -->
+    <script src="https://use.typekit.net/tqt8dfj.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <!-- JS -->
+
+    <link rel='stylesheet' id='base-styles-css'  href='http://www.jengermann.com/wp-content/themes/v8/style.css' type='text/css' media='all' />
+
+    <style type="text/css" media="screen">
+      p {
+        line-height: 1.5 !important;
+      }
+
+      code {
+        background: #fff5e6;
+        font-size: 16px;
+      }
+
+      p code {
+        display: inline-block;
+        padding: 2px 5px;
+        top: -2px;
+        position: relative;
+      }
+
+      pre {
+        background: #fff5e6;
+        display: block;
+        margin: 25px 0;
+        padding: 15px 10px;
+      }
+
+      h1, h2, h3, h4 {
+        font-weight: 700;
+      }
+
+      h1 {
+        margin-bottom: 72px;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 33px;
+        margin-top: 42px;
+      }
+
+      h3, h4 {
+        font-size: 24px;
+        margin-top: 35px;
+      }
+
+      a {
+        color: #322e32;
+        border-bottom: 3px dotted;
+        margin: 0 5px;
+      }
+
+      a:hover {
+        color: #69b2bc;
+      }
+
+      a[title] {
+        background-color: #69b2bc;
+        border: 0;
+        color: #fff5e6;
+        display: inline-block;
+        margin-top: 36px;
+        padding: 0 10px 5px;
+      }
+
+      a[title] + a[title] {
+        float: right;
+      }
+
+      .module#contact article ul {
+        list-style: disc;
+        margin-left: 25px;
+      }
+
+      .module#contact article ul li {
+        display: list-item;
+        float: none;
+        margin: 0 0 12.5px;
+        max-width: none;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="contact" class="module active">
+      <div class="container">
+        <article>
+          <h1>Working with Fetch API</h1>
+          {{ content }}
+        </article>
+      </div>
+    </section>
+  </body>
+</html>
