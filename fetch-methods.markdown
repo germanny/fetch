@@ -11,7 +11,7 @@ header_js: |
 
 ## Fetch() Methods
 
-`fetch()` returns only Promises. To use the returned value, we need to call [the appropriate method](https://fetch.spec.whatwg.org/#body-mixin) to extract the `body` and handle the data:
+`fetch()` returns only Promises. To use the returned value, we need to call [the appropriate method](https://fetch.spec.whatwg.org/#body-mixin) to extract the `body` and handle the data, i.e.:
 
 ```
 arrayBuffer() (i.e. an array of bytes)
@@ -21,7 +21,7 @@ json()
 text()
 ```
 
-According to the fetch spec, this has to be done in such a way that the extract operation is guaranteed to not throw an exception. So these in turn return a Promise.
+The Fetch spec indicates each of these methods should return a Promise that resolves to the noted object (text, JSON, etc.).
 
 ### Example:
 

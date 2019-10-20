@@ -4,11 +4,10 @@ layout: page
 header_js: |
   fetch('/assets/js/colors.json')
     .then(checkStatus)
-    .then(json)
-    .then(function(data) {
+    .then(parseJSON)
+    .then(data => {
       console.log("Success! ", data);
-    })
-    .catch(function(err) {
+    }).catch(function(err) {
       console.log('Failed! ' + err);
     });
 ---
@@ -22,17 +21,15 @@ Chaining Promises lets you perform multiple tasks across different functions
 Helper functions to check the status of the response and return the appropriate Promise:
 
 ```
-function checkStatus(response) {
+const checkStatus = response => {
   if (response.status < 200 || response.status >= 300) {
-    return Promise.reject(new Error(response.statusText));
+    return Promise.reject(new Error(response.status + ", " + response.statusText));
   }
 
   return Promise.resolve(response);
 }
 
-function json(response) {
-  return response.json();
-}
+const parseJSON = response => response.json();
 ```
 
 Now, hop through some checks and Promises:
@@ -43,10 +40,10 @@ fetch('/assets/js/colors.json')
   .then(checkStatus)
 
   // if this resolves and returns a Promise from the response.json(), go to the next .then ...
-  .then(json)
+  .then(parseJSON)
 
   // do something with the data
-  .then(function(data) {
+  .then(data => {
     console.log("Success! ", data);
   })
 

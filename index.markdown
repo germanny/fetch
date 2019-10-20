@@ -3,14 +3,16 @@ title: Home
 layout: page
 header_js: |
   fetch('/assets/js/colors.json')
-    .then(response => {
-      console.log(response);
-    })
+    .then(response => response.json())
+    .then(result => console.log('success:', result))
+    .catch(error => console.log('error:', error));
 ---
 
 ## What is the Fetch API?
 
-Fetch returns a "Promise" - an object that may produce a single value some time in the future (a resolved value or a reason it's not resolve). This response can be "fulfilled", "rejected", or "pending", allowing us to work with data asynchronously.
+The Fetch API is a promised-based API that can perform server requests to fetch data asynchronously using plain Javascript.
+
+(A "promise" is an object that produces a single value some time in the future (a resolved value or a reason it's not resolve). This response can be "fulfilled", "rejected", or "pending", allowing us to work with data asynchronously.)
 
 The response of a `fetch()` request is what's known as a `Stream` object, which means that when we call (for example) the `json()` method, a Promise is returned since the reading of the stream will happen asynchronously.
 
@@ -39,9 +41,9 @@ Let's say we want to fetch the data in this file:
 
 ```
 fetch('/assets/js/colors.json')
-  .then(response => { // do something
-    console.log(response);
-  });
+  .then(response => response.json())
+  .then(result => console.log('success:', result))
+  .catch(error => console.log('error:', error));
 ```
 
 The response tells you a lot about what's being returned (if the request is successful and a status, for example), but not the actual data itself (in this case, a list of colors). This will be represented as:

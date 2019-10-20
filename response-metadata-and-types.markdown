@@ -4,7 +4,7 @@ layout: page
 header_js: |
   fetch('/assets/js/colors.json')
     .then(checkStatus)
-    .then(function(response) {
+    .then(response => {
       console.log(response.headers.get("Content-Type"));
       console.log(response.headers.get("Date"));
 
@@ -26,7 +26,7 @@ header_js: |
 fetch('/assets/js/colors.json')
   .then(checkStatus)
 
-  .then(function(response) {
+  .then(response => {
     console.log(response.headers.get("Content-Type"));
     console.log(response.headers.get("Date"));
 
@@ -48,3 +48,4 @@ fetch('/assets/js/colors.json')
 - **opaque**: response from different origin and no CORS header; we won't be able to read the data or status returned so we cannot see if the request was successful or not
 
 [<- Previous](/chain-responses/ "Previous")
+[Next ->](/pros-and-cons/ "Next")

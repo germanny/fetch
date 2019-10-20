@@ -5,7 +5,7 @@
     <title>{{ page.title }}</title>
 
     <script>
-      function checkStatus(response) {
+      const checkStatus = response => {
         if (response.status < 200 || response.status >= 300) {
           return Promise.reject(new Error(response.status + ", " + response.statusText));
         }
@@ -13,9 +13,7 @@
         return Promise.resolve(response);
       }
 
-      function json(response) {
-        return response.json();
-      }
+      const parseJSON = response => response.json();
 
       {{ page.header_js }}
     </script>
