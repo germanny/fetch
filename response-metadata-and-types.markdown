@@ -47,5 +47,5 @@ fetch('/assets/js/colors.json')
 - **cors**: response from different origin and restricts the headers you can view (though includes Content-Type)
 - **opaque**: response from different origin and no CORS header; we won't be able to read the data or status returned so we cannot see if the request was successful or not
 
-[<- Previous](/chain-responses/ "Previous")
-[Next ->](/pros-and-cons/ "Next")
+[<- Previous](/ "Previous")
+[Next ->](/fetch-methods/ "Next")

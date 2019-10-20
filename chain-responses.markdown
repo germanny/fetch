@@ -14,7 +14,7 @@ header_js: |
 
 ## Chaining Promises
 
-Chaining Promises lets you perform multiple tasks across different functions
+Chaining Promises lets you perform multiple tasks across different functions.
 
 ### Example
 
@@ -54,4 +54,4 @@ fetch('/assets/js/colors.json')
 ```
 
 [<- Previous](/fetch-methods/ "Previous")
-[Next ->](/response-metadata-and-types/ "Next")
+[Next ->](/pros-and-cons/ "Next")

@@ -3,18 +3,17 @@ title: Pros and Cons of Fetch API
 layout: page
 ---
 
-# Pros and Cons of Fetch API
+## Pros and Cons of Fetch API
 
-## Pros
+### Pros
 
 - No need for extra dependencies
 - Gets http requests native in ES6
 - Low level and very specific API that's good for simplistic API calls.
 
-## Cons
+### Cons
 
-- The default `catch()` block doesn't get http status code errors (only things like `failed request` or `network error`)
-- Fetch, similar to `XMLHttpRequest`, rejects the promise if there is a network error (e.g., the address cannot be resolved, server is unreachable, or CORS not permitted). 404, 500, etc. errors are treated as **success** and do not enter the `catch()` block.
+- The default `catch()` block doesn't get http status code errors (only things like `failed request` or `network error`). Fetch rejects the promise only if there is a network error (e.g., the address cannot be resolved, server is unreachable, or CORS not permitted). 404, 500, etc. errors are treated as **success** and do not enter the `catch()` block.
 - The basic usage has pretty low reusability.
 
 ```
@@ -51,3 +50,5 @@ fetch(url, {
   })
 });
 ```
+
+[<- Previous](/chain-responses/ "Previous")

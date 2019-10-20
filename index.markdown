@@ -3,18 +3,18 @@ title: Home
 layout: page
 header_js: |
   fetch('/assets/js/colors.json')
-    .then(response => response.json())
-    .then(result => console.log('success:', result))
-    .catch(error => console.log('error:', error));
+    .then(response => { // do something
+      console.log(response);
+    });
 ---
 
 ## What is the Fetch API?
 
 The Fetch API is a promised-based API that can perform server requests to fetch data asynchronously using plain Javascript.
 
-(A "promise" is an object that produces a single value some time in the future (a resolved value or a reason it's not resolve). This response can be "fulfilled", "rejected", or "pending", allowing us to work with data asynchronously.)
+Fetch returns an object containing the response (the promise) from the server, indicating the status and the headers. If there is a network error or the url doesn't resolve or whatever, then the promise will be rejected. We'll check the status and if it's looking good, we need to use a second method to call the data.
 
-The response of a `fetch()` request is what's known as a `Stream` object, which means that when we call (for example) the `json()` method, a Promise is returned since the reading of the stream will happen asynchronously.
+(The response of a Fetch request is what's known as a `Stream` object, which means that if, for example, we call the `json()` method, a Promise is returned since the reading of the stream will happen asynchronously.)
 
 ### Example:
 
@@ -37,13 +37,13 @@ The response of a `fetch()` request is what's known as a `Stream` object, which 
 }
 ```
 
-Let's say we want to fetch the data in this file:
+Let's say we want to check the response for this file:
 
 ```
 fetch('/assets/js/colors.json')
-  .then(response => response.json())
-  .then(result => console.log('success:', result))
-  .catch(error => console.log('error:', error));
+  .then(response => { // do something
+    console.log(response);
+  });
 ```
 
 The response tells you a lot about what's being returned (if the request is successful and a status, for example), but not the actual data itself (in this case, a list of colors). This will be represented as:
@@ -52,4 +52,4 @@ The response tells you a lot about what's being returned (if the request is succ
 body: ReadableStream
 ```
 
-[Next ->](/fetch-methods/ "Next")
+[Next ->](/response-metadata-and-types/ "Next")

@@ -27,11 +27,11 @@ The Fetch spec indicates each of these methods should return a Promise that reso
 
 ```
 fetch('/assets/js/colors.json')
-  .then(response => response.json()) // returns another Promise; if successful, .then ...
+  .then(response => response.json()) // returns a Promise; if successful, then ...
   .then(data => { // now we get the data
     console.log(data)
   })
 ```
 
-[<- Previous](/ "Previous")
+[<- Previous](/response-metadata-and-types/ "Previous")
 [Next ->](/chain-responses/ "Next")
