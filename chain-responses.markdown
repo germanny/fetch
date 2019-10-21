@@ -53,5 +53,33 @@ fetch('/assets/js/colors.json')
   });
 ```
 
+### Example of manipulating meta tags for failed API calls
+
+From [Understand the JavaScript SEO basics, by Google](https://developers.google.com/search/docs/guides/javascript-seo-basics#use-meta-robots-tags-carefully), though maybe this should be rewritten in a `try ... catch` statement.
+
+```
+fetch('/api/products/' + productId)
+  .then(function (response) { return response.json(); })
+  .then(function (apiResponse) {
+    if (apiResponse.isError) {
+      // get the robots meta tag
+      var metaRobots = document.querySelector('meta[name="robots"]');
+      // if there was no robots meta tag, add one
+      if (!metaRobots) {
+        metaRobots = document.createElement('meta');
+        metaRobots.setAttribute('name', 'robots');
+        document.head.appendChild(metaRobots);
+      }
+      // tell Googlebot to exclude this page from the index
+      metaRobots.setAttribute('content', 'noindex');
+      // display an error message to the user
+      errorMsg.textContent = 'This product is no longer available';
+      return;
+    }
+    // display product information
+    // ...
+  });
+```
+
 [<- Previous](/fetch-methods/ "Previous")
 [Next ->](/pros-and-cons/ "Next")
